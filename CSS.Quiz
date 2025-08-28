@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz</title>
+<style>
+    /* Fonte clean do Google */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #1e1e2f, #2c2c54);
+        margin: 0;
+        padding: 20px;
+        color: #333;
+    }
+
+    .quiz-container {
+        max-width: 650px;
+        margin: auto;
+        padding: 25px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    h1 {
+        text-align: center;
+        color: #2c2c54;
+        margin-bottom: 25px;
+    }
+
+    .card {
+        background: #f8f8f8;
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 20px;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 12px;
+        cursor: pointer;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        font-size: 16px;
+        background: #fff;
+        outline: none;
+        transition: border 0.3s;
+    }
+
+    input[type="text"]:focus {
+        border: 2px solid #008CFF;
+    }
+
+    .question {
+        margin-bottom: 15px;
+        font-weight: 600;
+        color: #2c2c54;
+    }
+
+    .options label {
+        font-weight: normal;
+        background: #fff;
+        padding: 8px 12px;
+        border-radius: 10px;
+        transition: background 0.3s;
+    }
+
+    .options label:hover {
+        background: #e6f0ff;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #008CFF, #006FCC);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        margin-top: 15px;
+        transition: transform 0.2s, background 0.3s;
+    }
+
+    button:hover {
+        background: linear-gradient(135deg, #006FCC, #004a99);
+        transform: scale(1.03);
+    }
+
+    .result {
+        background: #e6f0ff;
+        padding: 18px;
+        border-radius: 12px;
+        font-weight: bold;
+        margin-top: 25px;
+        text-align: center;
+        color: #2c2c54;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>✨ English Immersion Quiz ✨</h1>
+
+    <div class="card">
+        <label for="nome">Type your name:</label>
+        <input type="text" id="nome" placeholder="Ex: John Smith">
+    </div>
+
+    <div class="card">
+        <div class="question">QUESTION 01: Which word best completes the sentence?<br>
+        "The movie was so __________ that I couldn’t stop laughing."</div>
+        <div class="options">
+            <label><input type="radio" name="q1" value="0"> boring</label>
+            <label><input type="radio" name="q1" value="1"> hilarious</label>
+            <label><input type="radio" name="q1" value="0"> quiet</label>
+            <label><input type="radio" name="q1" value="0"> nervous</label>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="question">QUESTION 02: Choose the correct option:<br>
+        "By the time she arrived, we ______ dinner."</div>
+        <div class="options">
+            <label><input type="radio" name="q2" value="0"> have already finished</label>
+            <label><input type="radio" name="q2" value="1"> had already finished</label>
+            <label><input type="radio" name="q2" value="0"> already finish</label>
+            <label><input type="radio" name="q2" value="0"> has finished</label>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="question">QUESTION 03: Reading comprehension:<br>
+        "Sarah usually takes the bus to school, but today she walked because the weather was sunny. Tomorrow it is going to rain again."<br>
+        What can we infer?</div>
+        <div class="options">
+            <label><input type="radio" name="q3" value="0"> Sarah never takes the bus.</label>
+            <label><input type="radio" name="q3" value="1"> Sarah sometimes walks to school.</label>
+            <label><input type="radio" name="q3" value="0"> Sarah always walks to school.</label>
+            <label><input type="radio" name="q3" value="0"> Sarah hates buses.</label>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="question">QUESTION 04: Which city is known as "The Big Apple"?</div>
+        <div class="options">
+            <label><input type="radio" name="q4" value="0"> Los Angeles</label>
+            <label><input type="radio" name="q4" value="0"> London</label>
+            <label><input type="radio" name="q4" value="1"> New York City</label>
+            <label><input type="radio" name="q4" value="0"> Chicago</label>
+        </div>
+    </div>
+
+    <button onclick="calcularResultado()">Submit Answers</button>
+
+    <div class="result" id="resultado"></div>
+</div>
+
+<script>
+function calcularResultado() {
+    let nome = document.getElementById("nome").value;
+    let score = 0;
+
+    for (let i = 1; i <= 4; i++) {
+        let radios = document.getElementsByName("q" + i);
+        for (let r of radios) {
+            if (r.checked && r.value == "1") {
+                score++;
+            }
+        }
+    }
+
+    let resultado = document.getElementById("resultado");
+    if (nome.trim() === "") {
+        resultado.innerHTML = "⚠️ Please, type your name!";
+    } else {
+        resultado.innerHTML = `🎉 ${nome}, you got <strong>${score}</strong> out of 4 questions right!`;
+    }
+}
+</script>
+
+</body>
+</html>
