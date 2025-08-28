@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rodapé IFC</title>
+<style>
+    footer {
+        background-color: black;
+        color: white;
+        padding: 20px 40px;
+        border-top: 2px solid #008CFF; /* Linha azul no topo */
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .footer-logo {
+        max-width: 140px;
+    }
+
+    .footer-section {
+        flex: 1;
+        margin-left: 40px;
+    }
+
+    .footer-section h4 {
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    .footer-icons img {
+        width: 28px;
+        height: 28px;
+        margin-right: 10px;
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+    .footer-icons img:hover {
+        transform: scale(1.1);
+    }
+
+    .footer-icons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+</style>
+</head>
+<body>
+
+<footer>
+    <!-- Logo -->
+    <div>
+        <img src="logo-ifc.png" alt="Logo IFC" class="footer-logo">
+        <p style="font-size: 12px;">Catarinense<br>Campus Concórdia</p>
+    </div>
+
+    <!-- Contatos -->
+    <div class="footer-section">
+        <h4>Contatos</h4>
+        <div class="footer-icons">
+            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fapp.baixardesign.com.br%2Farquivo%2F30811034951&psig=AOvVaw1iT3-_qWmB9ItpYgpC34yJ&ust=1755213577754000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJD0r632iI8DFQAAAAAdAAAAABAE" alt="Instagram">
+            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fbr.pinterest.com%2Fpin%2F623185667168359182%2F&psig=AOvVaw036U57bJrCeb-XkODc2t7J&ust=1756432340385000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCKD4gLyyrI8DFQAAAAAdAAAAABAE" alt="WhatsApp">
+        </div>
+    </div>
+
+    <!-- Contribuintes -->
+    <div class="footer-section">
+        <h4>Contribuintes</h4>
+    </div>
+
+    <!-- Referências -->
+    <div class="footer-section">
+        <h4>Referências</h4>
+    </div>
+</footer>
+
+</body>
+</html>
